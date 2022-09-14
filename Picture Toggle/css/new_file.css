@@ -1,0 +1,116 @@
+:root{
+    --left-bg-color:rgb(235,222,128,0.8);
+    --right-bg-color:rgb(218,193,163,0.8);
+    --left-btn-color:rgb(201, 185, 65);
+    --right-btn-color:rgba(216, 165, 101);
+    --hover-width:75%;
+    --other-width:25%;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.split{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+}
+.split.left{
+    left: 0;
+    background-image: url(../img/img1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.split.right{
+    right: 0;
+    background-image: url(../img/img2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 加一层色调 */
+.split.left::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-bg-color);
+  }
+.split.right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-bg-color);
+}
+/* 子项样式 */
+h1{
+    font-size: 5rem;
+    color: white;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    letter-spacing: 12px;
+    text-transform:capitalize;
+}
+.btn{
+    position: absolute;
+    display: block;
+    width: 22%;
+    height: 8%;
+    border: 4px solid white;
+    left:35%;
+    top: 48%;
+    /* 字体 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+}
+.left .btn:hover {
+    background-color: var(--left-btn-color);
+    border-color:  var(--left-btn-color);
+}
+.right .btn:hover {
+    background-color: var(--right-btn-color);
+    border-color:  var(--right-btn-color);
+}
+
+/* 动画样式 */
+
+.hover-left .left {
+    width: var(--hover-width);
+}
+  
+.hover-left .right {
+    width: var(--other-width);
+}
+  
+.hover-right .right {
+    width: var(--hover-width);
+}
+  
+.hover-right .left {
+    width: var(--other-width);
+}
+
+/* 过渡自然些 */
+
+.split.right,
+.split.left,
+.split.right::before,
+.split.left::before {
+  transition: all 300ms  ease-in-out;
+}
